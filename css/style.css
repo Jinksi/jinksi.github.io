@@ -5887,6 +5887,14 @@ h6 {
 p {
   margin-top: 0; }
 
+::-moz-selection {
+  color: inherit;
+  background-color: rgba(26, 26, 26, 0.5); }
+
+::selection {
+  color: #ff5151;
+  background-color: rgba(26, 26, 26, 0.5); }
+
 a {
   color: #ff5151;
   text-decoration: none;
@@ -6321,21 +6329,19 @@ hr {
     display: inline-block;
     margin-right: -5px; }
 
-.typed-cursor {
-  opacity: 1;
-  display: inline-block; }
+.blend-image {
+  padding: 0;
+  width: 100%;
+  height: 400px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-blend-mode: lighten; }
 
-@keyframes blink {
-  0% {
-    opacity: 1; }
-  50% {
-    opacity: 0; }
-  100% {
-    opacity: 1; } }
-@-webkit-keyframes blink {
-  0% {
-    opacity: 1; }
-  50% {
-    opacity: 0; }
-  100% {
-    opacity: 1; } }
+.content {
+  padding: 25px 0; }
+  .content img {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    min-width: 0;
+    height: auto; }

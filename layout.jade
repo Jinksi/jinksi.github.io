@@ -10,6 +10,38 @@ html
     script(src="/js/min/main-min.js")
     link(rel="icon" type="image/png" href="images/favicon.png")
   body
-    block content
+    .bg
+    canvas.bg2#bg2
+    .container.row.fullheight
+      header.animated.fadeIn.header.taright.four.columns.vertmid
+        h1.logo <a href="/">Eric Jinks</a>
+        .info 
+          //- span.cursor _
+          .typed
+            span web developer
+            span musician
+            span visual artist
+            span web designer
+            span sound designer
+        nav.nav
+          ul
+            li
+              a(href="/code.html").code code
+            li
+              a(href="/") projects
+            li
+              a(href="/") about
+        ul.social
+          - var twitter = "twitter.com/jinksi"
+          - var github = "github.com/jinksi"
+          - var instagram = "instagram.com/jinksi"
+          - var email = "ericjinks@gmail.com"
+          li
+            a(href="http://#{twitter}" title="#{twitter}").tooltip <i class="icon ion-social-twitter"></i>
+            a(href="http://#{github}" title="#{github}").tooltip <i class="icon ion-social-github"></i>
+            a(href="http://#{instagram}" title="#{instagram}").tooltip <i class="icon ion-social-instagram"></i>
+            a(href="mailto#{email}" title="#{email}").tooltip <i class="icon ion-email"></i>
+
+      block content
       
     .overlay-texture

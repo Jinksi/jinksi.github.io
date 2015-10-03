@@ -45,4 +45,12 @@ $(document).ready(function($){
     return splitIntoWords($(this).text());
   });
 
+  $('.code').click(function(e){
+    e.preventDefault();
+    var url = $(this).attr('href');
+    $('#content').fadeOut('slow', function(){
+      $(this).empty().load(url + " #content").fadeIn('fast');
+    });
+  });
+
 });

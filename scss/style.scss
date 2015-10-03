@@ -221,6 +221,10 @@ p {
   margin-top: 0;
 }
 
+::-moz-selection { color: inherit;   background-color: transparentize($bg-color, .5);}
+::selection      { color: $primary-color;  background-color: transparentize($bg-color, .5);}
+
+
 // Links
 //––––––––––––––––––––––––––––––––––––––––––––––––––
 
@@ -837,25 +841,23 @@ hr {
     margin-right: -5px;
   }
 }
-.typed-cursor{
-    opacity: 1;
-    display: inline-block;
-    // -webkit-animation: blink 0.7s infinite;
-    // -moz-animation: blink 0.7s infinite;
-    // animation: blink 0.7s infinite;
+.blend-image{
+  padding:0;
+  width: 100%;
+  height: 400px;
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-blend-mode: lighten;
 }
-@keyframes blink{
-    0% { opacity:1; }
-    50% { opacity:0; }
-    100% { opacity:1; }
-}
-@-webkit-keyframes blink{
-    0% { opacity:1; }
-    50% { opacity:0; }
-    100% { opacity:1; }
-}
-@-moz-keyframes blink{
-    0% { opacity:1; }
-    50% { opacity:0; }
-    100% { opacity:1; }
+.content{
+  padding: 25px 0;
+  img{
+    display: block;
+    width: auto;
+    max-width: 100%;
+    min-width: 0;
+    height: auto;
+
+  }
 }
