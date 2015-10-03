@@ -1,6 +1,7 @@
 doctype
 html
   head
+    title Eric
     meta(charset="utf-8")
     <meta name="viewport" content="width=device-width, initial-scale=1">
     link(href='//fonts.googleapis.com/css?family=Josefin+Sans:400,300,700' rel='stylesheet' type='text/css')
@@ -14,10 +15,12 @@ html
     .container.row
       header.header.taright.three.columns.vertmid
         h1.logo Eric Jinks
-        p.info 
-          | web developer,
-          br
-          | visual artist, musician
+        .info 
+          //- span.cursor _
+          .typed
+            span _web developer
+            span _musician
+            span _visual artist
         nav.nav
       .nine.columns
     //- .overlay-colour-wrap

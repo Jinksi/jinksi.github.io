@@ -882,3 +882,34 @@ hr {
   letter-spacing: .5em;
   word-spacing: 100vw;
   margin-right: -.5em; }
+
+.info {
+  line-height: 2rem;
+  min-height: 2rem; }
+  .info .typed {
+    display: inline-block; }
+  .info span {
+    display: block;
+    margin: 0 .15em; }
+  .info .cursor {
+    display: inline-block;
+    margin-right: -5px; }
+
+.typed-cursor {
+  opacity: 1;
+  display: inline-block; }
+
+@keyframes blink {
+  0% {
+    opacity: 1; }
+  50% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+@-webkit-keyframes blink {
+  0% {
+    opacity: 1; }
+  50% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
