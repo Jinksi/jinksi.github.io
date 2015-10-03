@@ -791,6 +791,26 @@ hr {
   letter-spacing: .4em;
   word-spacing: 100vw;
   margin-right: -.5em;
+  &:hover span{
+    color: $primary-color;
+  }
+  span{
+    transition: all .6s ease;
+    transition-delay: 0s;
+    display: block;
+    &:nth-child(2){
+      transition-delay: .15s;
+    }
+  }
+  a{
+    color: inherit;
+    &:hover{
+      // color: $primary-color;
+    }
+    &:after{
+      display: none;
+    }
+  }
 }
 .info{
   line-height: 2rem;

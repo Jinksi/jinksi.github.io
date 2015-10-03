@@ -4120,6 +4120,21 @@ hr {
   letter-spacing: .4em;
   word-spacing: 100vw;
   margin-right: -.5em; }
+  .logo:hover span {
+    color: #ff5151; }
+  .logo span {
+    -webkit-transition: all .6s ease;
+            transition: all .6s ease;
+    -webkit-transition-delay: 0s;
+            transition-delay: 0s;
+    display: block; }
+    .logo span:nth-child(2) {
+      -webkit-transition-delay: .15s;
+              transition-delay: .15s; }
+  .logo a {
+    color: inherit; }
+    .logo a:after {
+      display: none; }
 
 .info {
   line-height: 2rem;

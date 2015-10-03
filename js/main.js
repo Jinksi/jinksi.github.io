@@ -31,4 +31,17 @@ $(document).ready(function($){
     position: 'bottom'
   });
 
+  function splitIntoWords(string){
+    var words = string.split(" ");
+
+    var newString = "";
+    $.each(words, function(i, v) {
+      newString += '<span>' + v + '</span>';
+    });
+    return newString;
+  }
+  $('.logo a').html(function(){
+    return splitIntoWords($(this).text());
+  });
+
 });
