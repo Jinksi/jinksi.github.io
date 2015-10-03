@@ -7830,7 +7830,7 @@
 		},
 	"\/bower_components\/pace\/pace.min.js": {
 		"fileType": 64,
-		"ignore": 0,
+		"ignore": 1,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/bower_components\/pace\/pace.min.js",
 		"outputAbbreviatedPath": "\/bower_components\/pace\/min\/pace.min-min.js",
@@ -10001,15 +10001,6 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/index.bak.html": {
-		"fileType": 8192,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/index.bak.html",
-		"outputAbbreviatedPath": "No Output Path",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
-		},
 	"\/index.html": {
 		"fileType": 8192,
 		"ignore": 1,
@@ -10236,32 +10227,38 @@
 	"\/js\/main.js": [
 		{
 			"followForSyntaxChecking": 1,
-			"linkedFileAbbreviatedPath": "\/bower_components\/waypoints\/lib\/jquery.waypoints.min.js",
+			"linkedFileAbbreviatedPath": "\/bower_components\/pace\/pace.min.js",
 			"position": 0,
 			"type": 0
 			},
 		{
 			"followForSyntaxChecking": 1,
-			"linkedFileAbbreviatedPath": "\/bower_components\/trianglify\/dist\/trianglify.min.js",
+			"linkedFileAbbreviatedPath": "\/bower_components\/waypoints\/lib\/jquery.waypoints.min.js",
 			"position": 1,
 			"type": 0
 			},
 		{
 			"followForSyntaxChecking": 1,
-			"linkedFileAbbreviatedPath": "\/bower_components\/waypoints\/lib\/shortcuts\/sticky.min.js",
+			"linkedFileAbbreviatedPath": "\/bower_components\/trianglify\/dist\/trianglify.min.js",
 			"position": 2,
 			"type": 0
 			},
 		{
 			"followForSyntaxChecking": 1,
-			"linkedFileAbbreviatedPath": "\/bower_components\/typedjs\/js\/typed.js",
+			"linkedFileAbbreviatedPath": "\/bower_components\/waypoints\/lib\/shortcuts\/sticky.min.js",
 			"position": 3,
 			"type": 0
 			},
 		{
 			"followForSyntaxChecking": 1,
-			"linkedFileAbbreviatedPath": "\/bower_components\/tooltipster\/js\/jquery.tooltipster.min.js",
+			"linkedFileAbbreviatedPath": "\/bower_components\/typedjs\/js\/typed.js",
 			"position": 4,
+			"type": 0
+			},
+		{
+			"followForSyntaxChecking": 1,
+			"linkedFileAbbreviatedPath": "\/bower_components\/tooltipster\/js\/jquery.tooltipster.min.js",
+			"position": 5,
 			"type": 0
 			}
 		]
