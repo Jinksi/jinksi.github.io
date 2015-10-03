@@ -1,4 +1,6 @@
 @import "normalize";
+@import "ionicons";
+@import "tooltipster";
 
 /*
 * Skeleton V2.0.4
@@ -177,7 +179,7 @@ html {
 }
 
 body {
-  font-size: 2em; // currently ems cause chrome bug misinterpreting rems on body element
+  font-size: 2.3em; // currently ems cause chrome bug misinterpreting rems on body element
   line-height: 1.4;
   font-weight: 300;
   font-family: $font-family;
@@ -222,10 +224,27 @@ p {
 //––––––––––––––––––––––––––––––––––––––––––––––––––
 
 a {
-  color: $link-color;
+  color: $primary-color;
+  text-decoration: none;
+  position: relative;
+  transition: all .3s ease;
   &:hover {
-    color: darken($link-color, 5%);
+    color: inherit;
+    &:after{
+      width: 100%;
+    }
   }
+  &:after{
+    transition: all .2s ease;
+    content:"";
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background: $primary-color;
+    left:0;
+    bottom: -3px;
+  }
+
 }
 
 // Buttons
@@ -589,6 +608,7 @@ form {
   flex-direction: column;
   justify-content: center;
   align-items: middle;
+  height: 100%;
 }
 // Misc
 //––––––––––––––––––––––––––––––––––––––––––––––––––
@@ -674,16 +694,73 @@ hr {
   background-image: url(/images/otis-redding.png);
   // mix-blend-mode:screen;
 }
-
+.fullheight{
+  height: 100vh;
+  position: relative;
+}
 .header{
-  padding: 25px 0;
-  position: fixed;
-  height: 100%;
+  // padding: 25px 0;
+  .nav{
+    margin-top: 25px;
+    ul{
+      list-style: none;
+    }
+    li{
+      display: block;
+      margin: 0;
+      a{
+        color: $font-color;
+        text-decoration: none;
+        transition: all .3s ease;
+        position: relative;
+
+        &:hover{
+          // color:$primary-color;
+          &:after{
+            width: 100%;
+          }
+        }
+        &:before{
+          // content:"_";
+        }
+        &:after{
+          transition: all .2s ease;
+          content:"";
+          position: absolute;
+          width: 0%;
+          height: 2px;
+          background: $primary-color;
+          left:0;
+          bottom: -3px;
+        }
+      }
+    }
+  }
+}
+.social{
+  list-style: none;
+  li{
+    a{
+      color: inherit;
+      opacity: .7;
+      width: 3.5rem;
+      height: auto;
+      display: inline-block;
+      text-align: center;
+      &:after{
+        display: none;
+      }
+      &:hover{
+        color: $primary-color;
+        opacity: 1;
+      }
+    }
+  }
 }
 .logo{
   font-size: 3rem;
   font-weight: 700;
-  letter-spacing: .5em;
+  letter-spacing: .4em;
   word-spacing: 100vw;
   margin-right: -.5em;
 }
@@ -692,6 +769,14 @@ hr {
   min-height: 2rem;
   .typed{
     display: inline-block;
+    &:before{
+      content:"";
+      border-bottom: 2px solid $primary-color;
+      color: $primary-color;
+      width: .5em;
+      margin-right: .1em;
+      display: inline-block;
+    }
   }
   span{
     display: block;

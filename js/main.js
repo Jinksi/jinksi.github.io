@@ -24,5 +24,11 @@ $(document).ready(function($){
       showCursor: false
     });
   }
-  // typeMe();
+  typeMe();
+
+  $('.tooltip').tooltipster({
+    animation: 'fade',
+    position: 'bottom'
+  });
+
 });
