@@ -28,7 +28,8 @@ $(document).ready(function($){
 
   $('.tooltip').tooltipster({
     animation: 'fade',
-    position: 'bottom'
+    position: 'bottom',
+    delay: 1000
   });
 
   function splitIntoWords(string){

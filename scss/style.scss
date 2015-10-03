@@ -1,6 +1,7 @@
 @import "normalize";
 @import "ionicons";
 @import "tooltipster";
+@import "animate.min";
 
 /*
 * Skeleton V2.0.4
@@ -184,7 +185,7 @@ body {
   font-weight: 300;
   font-family: $font-family;
   color: $font-color;
-  overflow: hidden;
+  overflow-x: hidden;
   background-color: $bg-color;
 }
 
@@ -814,7 +815,8 @@ hr {
 }
 .info{
   line-height: 2rem;
-  min-height: 2rem;
+  height: 2rem;
+  overflow: hidden;
   .typed{
     display: inline-block;
     &:before{
