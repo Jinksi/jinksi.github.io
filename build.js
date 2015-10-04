@@ -9,6 +9,7 @@ var metalsmith = require('metalsmith'),
     layouts = require('metalsmith-layouts'),
     jade = require('metalsmith-jade'),
     watch = require('metalsmith-watch'),
+    concat = require('metalsmith-concat'),
     moment = require('moment');
 
 var siteBuild = metalsmith(__dirname)
@@ -26,6 +27,10 @@ var siteBuild = metalsmith(__dirname)
   .use(markdown())
   .use(layouts({
     engine: "jade"
+  }))
+  .use(concat({
+    files: 'js/**/*.js',
+    output: 'js/min/main-min.js'
   }))
   .use(serve({
     port: 8080,
