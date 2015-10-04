@@ -7,7 +7,6 @@ var metalsmith = require('metalsmith'),
     permalinks = require('metalsmith-permalinks'),
     serve = require('metalsmith-serve'),
     layouts = require('metalsmith-layouts'),
-    jade = require('metalsmith-jade'),
     watch = require('metalsmith-watch'),
     concat = require('metalsmith-concat'),
     moment = require('moment');
