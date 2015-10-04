@@ -1,10 +1,15 @@
 extends layout
-
 block content
+  if collections.posts && collections.posts.length > 0
     ul.post-list
       each post in collections.posts
         li.post-item
-          a(href="#{post.url}") 
-            h5= post.title
-            div!= post
-        
+          h5.title
+            a(href="/#{post.path}")
+             =post.title
+          div.details #{moment(post.publishDate).format("Do MMM, YYYY")}
+          div !{post.excerpt} 
+            a(href="/#{post.path}" class="readmore").u-pull-right read more
+            .clear
+        hr
+  else 

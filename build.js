@@ -29,6 +29,7 @@ var siteBuild = metalsmith(__dirname)
     }
   }))
   .use(markdown())
+  .use(excerpts())
   .use(branch('posts/**.html')
     .use(permalinks({
       pattern:':collection/:title'
@@ -61,7 +62,10 @@ var siteBuild = metalsmith(__dirname)
     }
   }))
   .use(watch({
-    pattern: '**/*',
+    paths: {
+        "${source}/**/*": '**/*',
+        "layouts/**/*": "**/*",
+      },
     livereload: true
   }))
   .build(function(err){

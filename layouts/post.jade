@@ -1,9 +1,13 @@
 extends layout
-
 block content
-  
-    h1= title
-    div.details By #{author} | Published #{moment(publishDate).format("M.D.YYYY")}
+  .post-header
+    h4= title
+    div.details #{author}, #{moment(publishDate).format("Do MMM, YYYY")}
       if modifyDate && moment(publishDate).isBefore(modifyDate)
-        span Updated #{moment(modifyDate).format("M.D.YYYY")}
+        span  - updated #{moment(modifyDate).format("Do MMM, YYYY")}
+  .post-content      
     div!= contents
+
+  link(rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/monokai_sublime.min.css")
+  script(src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js")
+  script hljs.initHighlightingOnLoad();
