@@ -1,15 +1,7 @@
 doctype
 html
   head
-    title= title ? title + ' - ' + site.title : site.title
-    meta(charset="utf-8")
-    meta(name="viewport" content="width=device-width, initial-scale=1")
-    link(href='//fonts.googleapis.com/css?family=Josefin+Sans:400,300,700' rel='stylesheet' type='text/css')
-    link(href='/css/style.css' rel='stylesheet' type='text/css')
-    script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js")
-    script(src="/js/min/main-min.js")
-    script(src="http://localhost:35729/livereload.js")
-    link(rel="icon" type="image/png" href="images/favicon.png")
+    include partials/head.jade
   body
     .bg
     canvas.bg2#bg2
@@ -23,8 +15,8 @@ html
               span web developer
               span musician
               span visual artist
-              span web designer
               span sound designer
+              span web designer
           nav.nav
             ul
               //- li
