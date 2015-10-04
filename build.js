@@ -25,7 +25,7 @@ var siteBuild = metalsmith(__dirname)
     posts: {
       pattern: 'posts/*.md',
       sortBy: 'date',
-      rverse: true
+      reverse: true
     }
   }))
   .use(markdown())
