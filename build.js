@@ -2,12 +2,12 @@ var metalsmith = require('metalsmith'),
     branch = require('metalsmith-branch'),
     collections = require('metalsmith-collections'),
     excerpts = require('metalsmith-excerpts'),
+    // sass = require('metalsmith-sass'),
     markdown = require('metalsmith-markdown'),
     permalinks = require('metalsmith-permalinks'),
     serve = require('metalsmith-serve'),
     templates = require('metalsmith-templates'),
     jade = require('metalsmith-jade'),
-    sass = require('metalsmith-sass'),
     watch = require('metalsmith-watch'),
     moment = require('moment');
 
@@ -20,9 +20,8 @@ var siteBuild = metalsmith(__dirname)
   })
   .source('./src')
   .destination('./build')
-  // build plugins here
   .use(sass({
-    outputDir: 'css/'
+    outputDir: './css'
   }))
   .use(markdown())
   .use(templates({
@@ -42,6 +41,5 @@ var siteBuild = metalsmith(__dirname)
       console.log(err);
     } else {
       console.log('Site build complete!');
-      done();
     }
   });
