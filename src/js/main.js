@@ -18,7 +18,7 @@ $(document).ready(function($){
       strings: typeItems,
       typeSpeed: 50,
       backSpeed: 30,
-      loop: true,
+      loop: false,
       backDelay: 5000,
       cursorChar: '<',
       showCursor: false
