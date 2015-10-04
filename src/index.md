@@ -1,6 +1,6 @@
 ---
 title: About
-layout: index.jade
+layout: page.jade
 ---
 Hello. I am a front-end web developer, from the Gold Coast, Australia. I work as part of the [thrive](http://thriveweb.com.au) team.
 

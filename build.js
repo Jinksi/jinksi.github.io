@@ -26,7 +26,8 @@ var siteBuild = metalsmith(__dirname)
   }))
   .use(markdown())
   .use(layouts({
-    engine: "jade"
+    engine: "jade",
+    moment: moment
   }))
   .use(concat({
     files: 'js/**/*.js',
