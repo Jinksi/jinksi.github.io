@@ -1,7 +1,7 @@
 
-*.scssc
+
 bower_components
 .codekit-cache
-.sass-cache
+
 node_modules
 build

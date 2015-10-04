@@ -2,7 +2,7 @@ var metalsmith = require('metalsmith'),
     branch = require('metalsmith-branch'),
     collections = require('metalsmith-collections'),
     excerpts = require('metalsmith-excerpts'),
-    // sass = require('metalsmith-sass'),
+    sass = require('metalsmith-sass'),
     markdown = require('metalsmith-markdown'),
     permalinks = require('metalsmith-permalinks'),
     serve = require('metalsmith-serve'),
@@ -21,7 +21,7 @@ var siteBuild = metalsmith(__dirname)
   .source('./src')
   .destination('./build')
   .use(sass({
-    outputDir: './css'
+    outputDir: 'css/'
   }))
   .use(markdown())
   .use(templates({
