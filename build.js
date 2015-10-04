@@ -6,7 +6,7 @@ var metalsmith = require('metalsmith'),
     markdown = require('metalsmith-markdown'),
     permalinks = require('metalsmith-permalinks'),
     serve = require('metalsmith-serve'),
-    templates = require('metalsmith-templates'),
+    layouts = require('metalsmith-layouts'),
     jade = require('metalsmith-jade'),
     watch = require('metalsmith-watch'),
     moment = require('moment');
@@ -24,9 +24,8 @@ var siteBuild = metalsmith(__dirname)
     outputDir: 'css/'
   }))
   .use(markdown())
-  .use(templates({
-    engine: 'jade',
-    moment: moment
+  .use(layouts({
+    engine: "jade"
   }))
   .use(serve({
     port: 8080,
