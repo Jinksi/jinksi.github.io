@@ -6,6 +6,8 @@ var metalsmith = require('metalsmith'),
     permalinks = require('metalsmith-permalinks'),
     serve = require('metalsmith-serve'),
     templates = require('metalsmith-templates'),
+    jade = require('metalsmith-jade'),
+    sass = require('metalsmith-sass'),
     watch = require('metalsmith-watch'),
     moment = require('moment');
 
@@ -16,11 +18,14 @@ var siteBuild = metalsmith(__dirname)
       url: 'http://ericjinks.com'
     }
   })
-  .sourche('./src')
+  .source('./src')
   .destination('./build')
   // build plugins here
+  .use(sass({
+    outputDir: 'css/'
+  }))
   .use(markdown())
-  .use(template({
+  .use(templates({
     engine: 'jade',
     moment: moment
   }))
@@ -37,5 +42,6 @@ var siteBuild = metalsmith(__dirname)
       console.log(err);
     } else {
       console.log('Site build complete!');
+      done();
     }
   });
