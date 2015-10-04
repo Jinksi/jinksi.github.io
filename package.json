@@ -1,0 +1,28 @@
+{
+  "name": "eric-website",
+  "version": "0.1.0",
+  "description": "My website, made with node",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/jinksi/eric.git"
+  },
+  "author": "Eric Jinks",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/jinksi/eric#readme",
+  "dependencies": {
+    "metalsmith": "^2.1.0",
+    "metalsmith-branch": "0.0.4",
+    "metalsmith-collections": "^0.7.0",
+    "metalsmith-excerpts": "^1.0.0",
+    "metalsmith-markdown": "^0.2.1",
+    "metalsmith-permalinks": "^0.4.0",
+    "metalsmith-serve": "0.0.4",
+    "metalsmith-templates": "^0.7.0",
+    "metalsmith-watch": "^1.0.1",
+    "moment": "^2.10.6"
+  }
+}
