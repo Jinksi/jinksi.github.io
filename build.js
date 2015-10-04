@@ -14,7 +14,7 @@ var metalsmith = require('metalsmith'),
 var siteBuild = metalsmith(__dirname)
   .metadata({
     site: {
-      title: 'ericjinks.com',
+      title: 'Eric Jinks',
       url: 'http://ericjinks.com'
     }
   })

@@ -1,5 +1,5 @@
 ---
-title: home
+title: About
 layout: index.jade
 ---
 Hello. I am a front-end web developer, from the Gold Coast, Australia.
