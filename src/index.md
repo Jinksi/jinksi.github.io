@@ -6,4 +6,4 @@ Hello. I am a front-end web developer, from the Gold Coast, Australia. I work as
 
 I also create music and visual art when I'm inspired.
 
-If you want to get in touch, you can contact me at [ericjinks@gmail.com](mailto:ericjinks@gmail.com)
+If you want to get in touch, you can contact me at [ericjinks@gmail.com](mailto:ericjinks@gmail.com).
