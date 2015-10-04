@@ -2,7 +2,6 @@ extends layout
 
 block content
   
-  article#article.animated.fadeIn.eight.columns.content.vertmid
     h1= title
     div.details By #{author} | Published #{moment(publishDate).format("M.D.YYYY")}
       if modifyDate && moment(publishDate).isBefore(modifyDate)

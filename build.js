@@ -21,10 +21,28 @@ var siteBuild = metalsmith(__dirname)
   })
   .source('./src')
   .destination('./build')
-  .use(sass({
-    outputDir: 'css/'
+  .use(collections({
+    posts: {
+      pattern: 'posts/*.md',
+      sortBy: 'date',
+      rverse: true
+    }
   }))
   .use(markdown())
+  .use(branch('posts/**.html')
+    .use(permalinks({
+      pattern:':collection/:title'
+    }))
+  )
+  .use(branch('**.html')
+    .use(branch('!index.html')
+      .use(branch('!404.html')
+        .use(permalinks({
+          pattern:':title'
+        }))
+      )
+    )
+  )
   .use(layouts({
     engine: "jade",
     moment: moment
@@ -33,9 +51,14 @@ var siteBuild = metalsmith(__dirname)
     files: 'js/**/*.js',
     output: 'js/min/main-min.js'
   }))
+  .use(sass({
+    outputDir: 'css/'
+  }))
   .use(serve({
     port: 8080,
-    verbose: true
+    http_error_files: {
+      404: "/404.html"
+    }
   }))
   .use(watch({
     pattern: '**/*',

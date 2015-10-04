@@ -1,0 +1,10 @@
+extends layout
+
+block content
+    ul.post-list
+      each post in collections.posts
+        li.post-item
+          a(href="#{post.url}") 
+            h5= post.title
+            div!= post
+        

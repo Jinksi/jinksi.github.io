@@ -612,8 +612,8 @@ form {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: middle;
-  height: 100%;
+  // align-items: center;
+  min-height: 100%;
 }
 // Misc
 //––––––––––––––––––––––––––––––––––––––––––––––––––
@@ -632,7 +632,8 @@ hr {
 
 .container:after,
 .row:after,
-.u-cf {
+.u-cf,
+.clear{
   content: "";
   display: table;
   clear: both;
@@ -728,11 +729,12 @@ hr {
   // mix-blend-mode:screen;
 }
 .fullheight{
-  height: 100vh;
+  min-height: 100vh;
   position: relative;
 }
 .header{
   // padding: 25px 0;
+  position: fixed;
   .nav{
     margin-top: 25px;
     ul{
@@ -850,8 +852,13 @@ hr {
   background-size: cover;
   background-blend-mode: lighten;
 }
+.no-pointer{
+  pointer-events: none;
+}
 .content{
-  padding: 25px 0;
+  padding: 100px 0;
+  pointer-events: all;
+
   img{
     display: block;
     width: auto;
