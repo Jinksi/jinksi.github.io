@@ -54,19 +54,19 @@ Metalsmith(__dirname)
   .use(sass({
     outputDir: 'css/'
   }))
-  .use(serve({
-    port: 8080,
-    http_error_files: {
-      404: "/404.html"
-    }
-  }))
-  .use(watch({
-    paths: {
-        "${source}/**/*": '**/*',
-        "layouts/**/*": "**/*",
-      },
-    livereload: true
-  }))
+  // .use(serve({
+  //   port: 8080,
+  //   http_error_files: {
+  //     404: "/404.html"
+  //   }
+  // }))
+  // .use(watch({
+  //   paths: {
+  //       "${source}/**/*": '**/*',
+  //       "layouts/**/*": "**/*",
+  //     },
+  //   livereload: true
+  // }))
   .build(function(err){
     if (err){
       console.log(err);

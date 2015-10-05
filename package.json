@@ -5,7 +5,8 @@
   "scripts": {
       "build": "node build",
       "start": "npm run build",
-      "deploy": "node build && cd ./build && git init . && git add . && git commit -m 'Deploy'; git push 'git@github.com:Jinksi/jinksi.github.io.git' master --force && rm -rf .git"
+      "deploy": "node build && cd ./build && open ."
+
   },
   "repository": {
     "type": "git",
