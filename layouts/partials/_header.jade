@@ -1,0 +1,32 @@
+header.header
+  .container.row
+    .animated.fadeIn.header.taright.four.columns.vertmid
+      h1.logo <a href="/">Eric Jinks</a>
+      .info 
+        //- span.cursor _
+        .typed
+          //- span web developer
+          //- span musician
+          //- span visual artist
+          //- span sound designer
+          //- span web designer
+      nav.nav
+        ul
+          //- li
+          //-   a(href="/code.html").code code
+          //- li
+          //-   a(href="/") projects
+          li
+            a(href="/blog") blog
+          li
+            a(href="/") about
+      ul.social
+        - var twitter = "twitter.com/jinksi"
+        - var github = "github.com/jinksi"
+        - var instagram = "instagram.com/jinksi"
+        - var email = "ericjinks@gmail.com"
+        li
+          a(href="http://#{twitter}" title="#{twitter}").tooltip <i class="icon ion-social-twitter"></i>
+          a(href="http://#{github}" title="#{github}").tooltip <i class="icon ion-social-github"></i>
+          a(href="http://#{instagram}" title="#{instagram}").tooltip <i class="icon ion-social-instagram"></i>
+          a(href="mailto#{email}" title="#{email}").tooltip <i class="icon ion-email"></i>
