@@ -1,4 +1,4 @@
-var metalsmith = require('metalsmith'),
+var Metalsmith = require('metalsmith'),
     branch = require('metalsmith-branch'),
     collections = require('metalsmith-collections'),
     excerpts = require('metalsmith-excerpts'),
@@ -11,7 +11,7 @@ var metalsmith = require('metalsmith'),
     concat = require('metalsmith-concat'),
     moment = require('moment');
 
-var siteBuild = metalsmith(__dirname)
+Metalsmith(__dirname)
   .metadata({
     site: {
       title: 'Eric Jinks',
