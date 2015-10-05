@@ -752,6 +752,7 @@ hr {
   width: 100%;
   z-index: 100;
   background: transparentize($bg-color, .3);
+
   .vertmid{
     display: flex;
     align-items: center;
@@ -814,7 +815,7 @@ hr {
     .nav{
       margin-top: 25px;
       ul{
-        margin-bottom: 2rem; 
+        margin-bottom: 2rem;
       }
       li{
         display: block;
@@ -846,6 +847,15 @@ hr {
       }
     }
   }
+}
+.headroom{
+  transition: all .3s ease;
+}
+.headroom--pinned{
+  transform: translateY(0%);
+}
+.headroom--unpinned{
+  transform: translateY(-100%);
 }
 .logo{
   font-size: 1.5rem;

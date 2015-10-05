@@ -8,6 +8,23 @@ $(document).ready(function($){
 
   pattern.canvas(document.getElementById('bg2'));
 
+  // grab an element
+  var myElement = document.querySelector("header");
+  // construct an instance of Headroom, passing the element
+  var headroomOptions = {
+      // vertical offset in px before element is first unpinned
+      offset : 50,
+      // or scroll tolerance per direction
+      tolerance : {
+          down : 20,
+          up : 0
+      }
+    };
+
+  var headroom  = new Headroom(myElement, headroomOptions );
+
+  // initialise
+  headroom.init();
 
   function typeMe(){
     var typeItems = [];
