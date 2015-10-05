@@ -1,0 +1,13 @@
+doctype
+html
+  head
+    include partials/_head.jade
+  body
+    .bg
+    canvas.bg2#bg2
+    include partials/_header.jade
+    .container.row.fullheight.no-pointer.vertmid
+      .animated.fadeIn.eight.columns.content.offset-by-four
+        block content
+        
+    .overlay-texture
