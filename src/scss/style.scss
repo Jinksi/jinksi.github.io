@@ -100,7 +100,7 @@ $global-radius: 4px !default;
 }
 
 // For devices larger than 550px
-@media (#{$bp-larger-than-phablet}) {
+@media (#{$bp-larger-than-tablet}) {
   .container {
     width: $container-width-larger-than-phablet;
   }
@@ -620,11 +620,13 @@ form {
   text-align: right;
 }
 .vertmid{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  // align-items: center;
-  min-height: 100%;
+  @media (#{$bp-larger-than-tablet}) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    // align-items: center;
+    min-height: 100%;
+  }
 }
 // Misc
 //––––––––––––––––––––––––––––––––––––––––––––––––––
@@ -710,8 +712,8 @@ hr {
   background-blend-mode: lighten;
   opacity: 1;
   position: fixed;
-  top:0;
-  bottom: 0;
+  top:-400px;
+  bottom: -400px;
   left:0;
   right:0;
   pointer-events: none;
@@ -719,9 +721,9 @@ hr {
 }
 .bg2{
   min-width: 100%;
-  min-height: 100%;
+  min-height: 150%;
   position: fixed;
-  top:0;
+  top:-50%;
   left:0;
   opacity: 1;
   // mix-blend-mode:lighten;
@@ -746,14 +748,27 @@ hr {
 .header{
   // padding: 25px 0;
   position: fixed;
+  padding: 15px 0;
+  width: 100%;
+  z-index: 100;
+  background: transparentize($bg-color, .3);
+  .vertmid{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .social{
+    display: none;
+  }
+  // border-bottom: $primary-color 5px solid;
   .nav{
-    margin-top: 25px;
     ul{
       list-style: none;
+      margin-bottom: 0;
     }
     li{
-      display: block;
-      margin: 0;
+      display: inline-block;
+      margin: 0 15px;
       a{
         color: $font-color;
         text-decoration: none;
@@ -782,6 +797,35 @@ hr {
       }
     }
   }
+  @media (#{$bp-larger-than-tablet}) {
+    text-align: right;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background: none;
+    z-index: initial;
+    .container{
+      height: 100%;
+    }
+    .vertmid{
+      align-items: initial;
+      justify-content: center;
+    }
+    .nav{
+      margin-top: 25px;
+      ul{
+        margin-bottom: 2rem; 
+      }
+      li{
+        display: block;
+        margin: 0;
+      }
+    }
+    .social{
+      display: block;
+    }
+  }
+
 }
 .social{
   list-style: none;
@@ -804,11 +848,16 @@ hr {
   }
 }
 .logo{
-  font-size: 3rem;
+  font-size: 1.5rem;
   font-weight: 700;
   letter-spacing: .4em;
   word-spacing: 100vw;
   margin-right: -.5em;
+  margin-bottom: 0;
+  @media (#{$bp-larger-than-tablet}){
+    font-size: 3rem;
+    margin-bottom: 2rem
+  }
   &:hover span{
     color: $primary-color;
   }
@@ -831,9 +880,13 @@ hr {
   }
 }
 .info{
+  display:none;
   line-height: 2rem;
   height: 2rem;
   overflow: hidden;
+  @media (#{$bp-larger-than-tablet}){
+    display: block;
+  }
   .typed{
     display: inline-block;
     &:before{
