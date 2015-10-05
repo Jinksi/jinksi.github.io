@@ -898,7 +898,11 @@ hr {
 
 .post-header{
   margin-bottom: 25px;
+  .post-title{
+    margin-bottom: 0;
+  }
 }
+
 .details{
   color: $light-grey;
   font-size: 1.7rem;

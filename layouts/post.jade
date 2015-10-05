@@ -1,7 +1,7 @@
 extends layout
 block content
   .post-header
-    h4= title
+    h4.post-title= title
     div.details #{author}, #{moment(publishDate).format("Do MMM YYYY")}
       if modifyDate && moment(publishDate).isBefore(modifyDate)
         span  - updated #{moment(modifyDate).format("Do MMM YYYY")}
