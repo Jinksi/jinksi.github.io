@@ -5,7 +5,7 @@
   "scripts": {
       "build": "node build",
       "start": "npm run build",
-      "deploy": "node build && cd ./build && open ."
+      "deploy": "node build && git push 'git@github.com:Jinksi/jinksi.github.io.git' `git subtree split --prefix build master`:master --force"
 
   },
   "repository": {
