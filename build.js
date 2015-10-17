@@ -10,6 +10,7 @@ var Metalsmith = require('metalsmith'),
     layouts = require('metalsmith-layouts'),
     watch = require('metalsmith-watch'),
     concat = require('metalsmith-concat'),
+    beautify = require('metalsmith-beautify'),
     moment = require('moment');
 
 Metalsmith(__dirname)
@@ -59,6 +60,12 @@ Metalsmith(__dirname)
   }))
   .use(sass({
     outputDir: 'css/'
+  }))
+  .use(beautify({
+    "js": false,
+    "html": {
+        "wrap_line_length": 80
+    }
   }))
   .use(serve({
     port: 8080,

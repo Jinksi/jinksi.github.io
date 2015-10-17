@@ -16,6 +16,7 @@
   "homepage": "https://bitbucket.org/jinksi/eric#readme",
   "dependencies": {
     "metalsmith": "^2.1.0",
+    "metalsmith-beautify": "0.0.7",
     "metalsmith-branch": "0.0.4",
     "metalsmith-collections": "^0.7.0",
     "metalsmith-concat": "^3.0.3",
