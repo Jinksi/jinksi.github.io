@@ -197,7 +197,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 2rem;
   font-weight: 300;
   text-transform: uppercase;
-  letter-spacing: .15em;
+  letter-spacing: .1em;
 }
 
 h1 { font-size: 4.0rem; line-height: 1.2;    }
@@ -989,4 +989,7 @@ hr {
 .tip{
   border-bottom: 1px dotted $light-grey;
   cursor: help;
+}
+.tag{
+
 }

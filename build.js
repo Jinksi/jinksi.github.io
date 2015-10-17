@@ -1,6 +1,7 @@
 var Metalsmith = require('metalsmith'),
     branch = require('metalsmith-branch'),
     collections = require('metalsmith-collections'),
+    tags = require('metalsmith-tags'),
     excerpts = require('metalsmith-excerpts'),
     sass = require('metalsmith-sass'),
     markdown = require('metalsmith-markdown'),
@@ -20,16 +21,21 @@ Metalsmith(__dirname)
   })
   .source('./src')
   .destination('./build')
+  .use(tags({
+    handle: 'tags',
+    path: 'blog/:tag.html',
+    layout: 'tag.jade'
+  }))
   .use(collections({
-    posts: {
-      pattern: 'posts/*.md',
+    blog: {
+      pattern: 'blog/*.md',
       sortBy: 'date',
       reverse: true
     }
   }))
   .use(markdown())
   .use(excerpts())
-  .use(branch('posts/**.html')
+  .use(branch('blog/**.html')
     .use(permalinks({
       pattern:':collection/:title'
     }))
@@ -54,19 +60,19 @@ Metalsmith(__dirname)
   .use(sass({
     outputDir: 'css/'
   }))
-  // .use(serve({
-  //   port: 8080,
-  //   http_error_files: {
-  //     404: "/404.html"
-  //   }
-  // }))
-  // .use(watch({
-  //   paths: {
-  //       "${source}/**/*": '**/*',
-  //       "layouts/**/*": "**/*",
-  //     },
-  //   livereload: true
-  // }))
+  .use(serve({
+    port: 8080,
+    http_error_files: {
+      404: "/404.html"
+    }
+  }))
+  .use(watch({
+    paths: {
+        "${source}/**/*": '**/*',
+        "layouts/**/*": "**/*",
+      },
+    livereload: true
+  }))
   .build(function(err){
     if (err){
       console.log(err);
