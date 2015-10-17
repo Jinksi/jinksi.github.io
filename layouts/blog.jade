@@ -8,6 +8,13 @@ block content
             a(href="/#{post.path}")
              =post.title
           div.details #{moment(post.publishDate).format("Do MMM YYYY")}
+          if post.tags && post.tags.length > 0
+            .details.tags
+              each tag, index in post.tags
+                a(href="/blog/#{tag}").tag #{tag}
+                if index != post.tags.length -1
+                  | , 
+
           div !{post.excerpt} 
             a(href="/#{post.path}" class="readmore").u-pull-right read more
             .clear
