@@ -15,7 +15,7 @@ $(document).ready(function($){
   var pattern = Trianglify({
     height: window.innerHeight,
     width: window.innerWidth,
-    x_colors:['#444', '#1a1a1a'],
+    x_colors:['#353535', '#1a1a1a'],
     cell_size: 50
   });
 
@@ -58,8 +58,8 @@ $(document).ready(function($){
 
   $('.tooltip').tooltipster({
     animation: 'fade',
-    position: 'bottom',
-    delay: 1000
+    position: 'top',
+    delay: 100
   });
 
   function splitIntoWords(string){

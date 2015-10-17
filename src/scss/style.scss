@@ -706,6 +706,7 @@ hr {
 
 
 .bg{
+  display: none;
   background: linear-gradient(0deg, rgba(255,50,50, 0) 0%, rgba(255,81,81, 0) 100%),
   url(/images/brilliant.png),
   $bg-color;
@@ -717,7 +718,7 @@ hr {
   left:0;
   right:0;
   pointer-events: none;
-  z-index: -1;
+  z-index: 0;
 }
 .bg2{
   min-width: 100%;
@@ -730,6 +731,7 @@ hr {
   z-index: 0;
 }
 .overlay-texture{
+  display: none;
   position: fixed;
   z-index: 100;
   top:0;
