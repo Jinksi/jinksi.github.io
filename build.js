@@ -75,10 +75,10 @@ Metalsmith(__dirname)
   }))
   .use(watch({
     paths: {
-        "${source}/**/*": '**/*',
+        "${source}/**/*": true,
         "layouts/**/*": "**/*",
       },
-    livereload: true
+    livereload: false
   }))
   .build(function(err){
     if (err){
