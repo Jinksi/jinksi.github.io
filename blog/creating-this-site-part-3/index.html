@@ -2,8 +2,9 @@
 <html>
 
 <head>
-	<title>Blog - Eric Jinks</title>
-	<meta name="google-site-verification" content="62aHHYtpLUO4xK86QMpim0mQOeVtRXW4IiK5fkzWMsw">
+	<title>Using Metalsmith - Adding Reading Time - Eric Jinks</title>
+	<meta name="google-site-verification"
+	content="62aHHYtpLUO4xK86QMpim0mQOeVtRXW4IiK5fkzWMsw">
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="//fonts.googleapis.com/css?family=Josefin+Sans:400,300,700" rel="stylesheet"
@@ -59,38 +60,60 @@
 	</header>
 	<div class="container row fullheight no-pointer vertmid">
 		<div class="animated fadeIn eight columns content offset-by-four">
-			<ul class="post-list">
-				<li class="post-item">
-					<h5 class="title"><a href="/blog/creating-this-site-part-3">Using Metalsmith - Adding Reading Time</a></h5>
-					<div class="details">
-						<div class="published">18th Oct 2015</div>
-						<div class="wordcount">1 min read</div>
-						<div class="tags"><a href="/blog/code" class="tag">code</a>, <a href="/blog/nodejs" class="tag">nodejs</a>,
-							<a href="/blog/metalsmith" class="tag">metalsmith</a></div>
-					</div>
-				</li>
-				<hr>
-				<li class="post-item">
-					<h5 class="title"><a href="/blog/creating-this-site-part-2">Using Metalsmith - Adding Tags</a></h5>
-					<div class="details">
-						<div class="published">17th Oct 2015</div>
-						<div class="wordcount">1 min read</div>
-						<div class="tags"><a href="/blog/code" class="tag">code</a>, <a href="/blog/nodejs" class="tag">nodejs</a>,
-							<a href="/blog/metalsmith" class="tag">metalsmith</a></div>
-					</div>
-				</li>
-				<hr>
-				<li class="post-item">
-					<h5 class="title"><a href="/blog/how-i-created-this-site-using-node-js">How I created this site using Node.js</a></h5>
-					<div class="details">
-						<div class="published">5th Oct 2015</div>
-						<div class="wordcount">4 min read</div>
-						<div class="tags"><a href="/blog/code" class="tag">code</a>, <a href="/blog/nodejs" class="tag">nodejs</a>,
-							<a href="/blog/metalsmith" class="tag">metalsmith</a></div>
-					</div>
-				</li>
-				<hr>
-			</ul>
+			<div class="post-header">
+				<h4 class="post-title">Using Metalsmith - Adding Reading Time</h4>
+				<div class="details">
+					<div class="published">18th Oct 2015</div>
+					<div class="wordcount">1 min read</div>
+					<div class="tags"><a href="/blog/code" class="tag">code</a>, <a href="/blog/nodejs" class="tag">nodejs</a>,
+						<a href="/blog/metalsmith" class="tag">metalsmith</a></div>
+				</div>
+			</div>
+			<div class="post-content">
+				<div>
+					<h6 id="the-plugin">The Plugin</h6>
+					<p>After installing the plugin with npm:</p>
+					<pre><code>npm install metalsmith-word-count --save
+</code></pre>
+					<p>I required the plugin in <code>build.js</code></p>
+					<pre><code>var tags = require(&#39;metalsmith-word-count&#39;);
+</code></pre>
+					<p>Incorporating this plugin was was simple as it gets. All I had to do was place
+						it once the html files were ready, after <code>.use(markdown)</code>:</p>
+					<pre><code>Metalsmith(__dirname)
+  // plugins
+  .use(markdown())
+  .use(wordcount())
+  // plugins continued
+</code></pre>
+					<p>Displaying the information in the <code>post.jade</code> template, after published
+						date:</p>
+					<pre><code class="nohighlight">.published #{moment(publishDate).format("Do MMM YYYY")}
+  if modifyDate && moment(publishDate).isBefore(modifyDate)
+    span  - updated #{moment(modifyDate).format("Do MMM YYYY")}
+.wordcount #{readingTime} read
+</code></pre>
+
+					<p>The reading time information is formatted nicely by default and more options
+						are available if necessary.</p>
+					<hr>
+					<h6 id="what-next-">What Next?</h6>
+					<p>Next I will look into including a new &#39;Post Type&#39; a.k.a Collection for
+						my projects/portfolio.</p>
+					<hr>
+					<h6 id="more-info">More info</h6>
+					<p><a href="/blog/how-i-created-this-site-using-node-js">How I built this site using Node.js</a>
+						<br/>
+						<a href="/blog/creating-this-site-part-2">Using Metalsmith - Adding Tags</a>
+						<br/>
+						<a href="https://github.com/majodev/metalsmith-word-count">metalsmith-word-count</a></p>
+				</div>
+			</div>
+			<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/monokai_sublime.min.css">
+			<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+			<script>
+				hljs.initHighlightingOnLoad();
+			</script>
 		</div>
 	</div>
 	<div class="overlay-texture">
