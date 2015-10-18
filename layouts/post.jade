@@ -2,15 +2,7 @@ extends layout
 block content
   .post-header
     h4.post-title= title
-    .details #{author}, #{moment(publishDate).format("Do MMM YYYY")}
-      if modifyDate && moment(publishDate).isBefore(modifyDate)
-        span  - updated #{moment(modifyDate).format("Do MMM YYYY")}
-    if tags && tags.length > 0
-      .details.tags
-        each tag, index in tags
-          a(href="/blog/#{tag}").tag #{tag}
-          if index != tags.length -1
-            | , 
+    include partials/_details.jade
   .post-content      
     div!= contents
 

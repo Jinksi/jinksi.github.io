@@ -38,7 +38,7 @@ Metalsmith(__dirname)
   .use(excerpts())
   .use(branch('blog/**.html')
     .use(permalinks({
-      pattern:':collection/:title'
+      pattern:':collection/:slug'
     }))
   )
   .use(branch('**.html')
@@ -67,19 +67,19 @@ Metalsmith(__dirname)
         "wrap_line_length": 80
     }
   }))
-  // .use(serve({
-  //   port: 8080,
-  //   http_error_files: {
-  //     404: "/404.html"
-  //   }
-  // }))
-  // .use(watch({
-  //   paths: {
-  //       "${source}/**/*": '**/*',
-  //       "layouts/**/*": "**/*",
-  //     },
-  //   livereload: true
-  // }))
+  .use(serve({
+    port: 8080,
+    http_error_files: {
+      404: "/404.html"
+    }
+  }))
+  .use(watch({
+    paths: {
+        "${source}/**/*": '**/*',
+        "layouts/**/*": "**/*",
+      },
+    livereload: true
+  }))
   .build(function(err){
     if (err){
       console.log(err);

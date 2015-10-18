@@ -980,12 +980,17 @@ hr {
   color: $light-grey;
   font-size: 1.7rem;
   margin: 0 0 0 1rem;
-  &:before{
-    content: "\f3d3";
-    font-family: 'Ionicons';
-    margin-right: .5em;
-    font-size: 1.3rem;
-    line-height: 1.7rem;
+  display: flex;
+  justify-content: flex-start;
+  div{
+    margin-right: 10px;
+    &:before{
+      content: "\f3d3";
+      font-family: 'Ionicons';
+      margin-right: .5em;
+      font-size: 1.3rem;
+      line-height: 1.7rem;
+    }
   }
 }
 .tip{

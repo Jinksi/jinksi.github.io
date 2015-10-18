@@ -8201,10 +8201,16 @@ hr {
 .details {
 	color: #7e7e7e;
 	font-size: 1.7rem;
-	margin: 0 0 0 1rem
+	margin: 0 0 0 1rem;
+	display: flex;
+	justify-content: flex-start
 }
 
-.details:before {
+.details div {
+	margin-right: 10px
+}
+
+.details div:before {
 	content: "\f3d3";
 	font-family: 'Ionicons';
 	margin-right: .5em;

@@ -10,8 +10,5 @@ block content
         h5.title
           a(href="/#{post.path}")
            =post.title
-        div.details #{moment(post.publishDate).format("Do MMM YYYY")}
-        div !{post.excerpt} 
-          a(href="/#{post.path}" class="readmore").u-pull-right read more
-          .clear
+        include partials/_details.jade
       hr
