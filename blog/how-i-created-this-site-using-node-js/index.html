@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>How I created this site using Node.js - Eric Jinks</title>
+	<meta name="google-site-verification"
+	content="62aHHYtpLUO4xK86QMpim0mQOeVtRXW4IiK5fkzWMsw">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="//fonts.googleapis.com/css?family=Josefin+Sans:400,300,700" rel="stylesheet"
+	type="text/css">
+	<link href="/css/style.css" rel="stylesheet" type="text/css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+	<script src="/js/min/main-min.js"></script>
+	<link rel="apple-touch-icon" sizes="57x57" href="/images/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="/images/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/images/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="/images/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="/images/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="/images/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="/images/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="/images/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192" href="/images/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+	<link rel="manifest" href="/images/manifest.json">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="/images/ms-icon-144x144.png">
+	<meta name="theme-color" content="#ffffff">
+</head>
+
+<body>
+	<div class="bg"></div>
+	<canvas id="bg2" class="bg2"></canvas>
+	<header class="header">
+		<div class="container row">
+			<div class="animated fadeIn four columns vertmid">
+				<h1 class="logo"><a href="/">Eric Jinks</a></h1>
+				<div class="info">
+					<div class="typed"></div>
+				</div>
+				<nav class="nav">
+					<ul>
+						<li><a href="/blog">blog</a></li>
+						<li><a href="/">about</a></li>
+					</ul>
+				</nav>
+				<ul class="social">
+					<li>
+						<a href="http://twitter.com/jinksi" title="twitter.com/jinksi" class="tooltip"><i class="icon ion-social-twitter"></i></a><a href="http://github.com/jinksi"
+						title="github.com/jinksi" class="tooltip"><i class="icon ion-social-github"></i></a>
+						<a
+						href="http://instagram.com/jinksi" title="instagram.com/jinksi" class="tooltip"><i class="icon ion-social-instagram"></i></a><a href="mailto:ericjinks@gmail.com"
+							title="ericjinks@gmail.com" class="tooltip"><i class="icon ion-email"></i></a></li>
+				</ul>
+			</div>
+		</div>
+	</header>
+	<div class="container row fullheight no-pointer vertmid">
+		<div class="animated fadeIn eight columns content offset-by-four">
+			<div class="post-header">
+				<h4 class="post-title">How I created this site using Node.js</h4>
+				<div class="details">
+					<div class="published">5th Oct 2015<span> - updated 17th Oct 2015</span></div>
+					<div class="tags"><a href="/blog/code" class="tag">code</a>, <a href="/blog/nodejs" class="tag">nodejs</a>,
+						<a href="/blog/metalsmith" class="tag">metalsmith</a></div>
+				</div>
+			</div>
+			<div class="post-content">
+				<div>
+					<p>Initially, I intended to run the site as dynamic content, using Node.js &amp;
+						<a href="http://expressjs.com">Express</a>. But I instead used Node.js as a
+						static site generator, spitting out html pages that I can then push to <a href="http://pages.github.com">Github Pages</a>						or <a href="http://surge.sh/">surge.sh</a>.</p>
+					<hr>
+					<h6 id="the-options">The Options</h6>
+					<p>After a bit of research, I came across a bunch of blog-ready static site generators
+						for Node.js (see <a href="https://www.staticgen.com/">StaticGen</a>).</p>
+					<ul>
+						<li><a href="http://jsantell.github.io/poet/">Poet</a></li>
+						<li><a href="http://docpad.org/">DocPad</a></li>
+						<li><a href="http://wintersmith.io/">Wintersmith</a></li>
+						<li><a href="http://www.metalsmith.io/">Metalsmith</a></li>
+					</ul>
+					<p>I decided on Metalsmith, due to the bare-bones structure and the flexibility
+						of it&#39;s optional plugins.</p>
+					<hr>
+					<h6 id="how-it-works">How It Works</h6>
+					<p>Installation is simple. I already had <a href="http://nodejs.org">Node.js</a>						and <a href="http://npmjs.com">npm</a> installed, so I chose a directory and
+						navigated to it in terminal.</p>
+					<pre><code class="bash">npm install metalsmith --save</code></pre>
+
+					<p>This installs Metalsmith and it&#39;s dependencies in the <code>node_modules</code>						directory. It also creates a <code>package.json</code> file containing the
+						required npm packages for this project.</p>
+					<p>Now I created an app file in the root directory that contains Metalsmith app.
+						I called it <code>build.js</code>. To get started, this file contains the following:</p>
+					<pre><code>var Metalsmith = require(&#39;metalsmith&#39;);
+// require plugins here
+Metalsmith(__dirname)
+  .source(&#39;./src&#39;)
+  .destination(&#39;./build&#39;)
+  // build plugins here
+  .build(function(err){
+    if (err){
+      console.log(err);
+    } else {
+      console.log(&#39;Site build complete!&#39;);
+    }
+  });
+</code></pre>
+					<p>Now, when I run the terminal command <code>node build</code> from the project
+						root directory, Metalsmith will grab the source directory, run it through any
+						plugins and spit it out at the build directory.</p>
+					<p>This is what my source directory looks like:</p>
+					<pre><code class="nohighlight">|-/src
+  |-/fonts
+  |-/images
+  |-/js
+  |-/posts
+    |-creating-this-site.md
+  |-/scss
+    |-_normalize.scss
+    |-style.scss
+  |-404.md
+  |-blog.md
+  |-index.md
+</code></pre>
+
+					<p>Without plugins, Metalsmith will simply copy the contents of this source directory
+						to the build directory.</p>
+					<hr>
+					<h6 id="the-plugins">The Plugins</h6>
+					<p>What plugins did I want to use? I found this out as I went along, but for starters
+						I wanted to:</p>
+					<ul>
+						<li>use Jade for templating the html</li>
+						<li>use Sass for compiling css</li>
+						<li>concatenate JS files</li>
+						<li>use Markdown for writing posts &amp; pages</li>
+						<li>create a Blog page containing a list (or &#39;collection&#39;) of posts</li>
+					</ul>
+					<p>So after hitting the Metalsmith <a href="http://www.metalsmith.io/#the-plugins">plugins directory</a>,
+						I found the plugins I needed to get started.</p>
+					<p>I installed the plugins by going to the project root in terminal and typing:</p>
+					<pre><code class="bash">npm install metalsmith-sass --save
+## Replace metalsmith-sass with plugin name.
+## Repeat for each plugin
+</code></pre>
+
+					<p>To use the plugins with Metalsmith, I required each at the top of <code>build.js</code>:</p>
+					<pre><code>var Metalsmith = require(&#39;metalsmith&#39;),
+    // require plugins here
+    collections = require(&#39;metalsmith-collections&#39;),
+    excerpts = require(&#39;metalsmith-excerpts&#39;),
+    sass = require(&#39;metalsmith-sass&#39;),
+    markdown = require(&#39;metalsmith-markdown&#39;),
+    permalinks = require(&#39;metalsmith-permalinks&#39;),
+    layouts = require(&#39;metalsmith-layouts&#39;),
+    concat = require(&#39;metalsmith-concat&#39;);
+</code></pre>
+					<p>Now I integrated the plugin into the Metalsmith pipeline, passing options as
+						an object:</p>
+					<pre><code>Metalsmith(__dirname)
+  .source(&#39;./src&#39;)
+  .destination(&#39;./build&#39;)
+  // build plugins here
+  .use(collections({
+    posts: {
+      pattern: &#39;posts/*.md&#39;,
+      sortBy: &#39;date&#39;,
+      reverse: true
+    }
+  }))
+  .use(markdown())
+  .use(excerpts())
+  .use(layouts({
+    engine: &quot;jade&quot;,
+    moment: moment
+  }))
+  .use(concat({
+    files: &#39;js/**/*.js&#39;,
+    output: &#39;js/min/main-min.js&#39;
+  }))
+  .use(sass({
+    outputDir: &#39;css/&#39;
+  }))
+  .build(function(err){
+    if (err){
+      console.log(err);
+    } else {
+      console.log(&#39;Site build complete!&#39;);
+    }
+  });
+</code></pre>
+					<p>Each plugin manipulates files in the source directory. The order can be critical:
+						converting from markdown to html prior to applying layouts with Jade.</p>
+					<hr>
+					<h6 id="layouts">Layouts</h6>
+					<p>So how do layouts work? My layouts live in a directory <code>/layouts</code>						containing:</p>
+					<pre><code class="nohighlight">|-/layouts
+  |-/partials
+    |-_head.jade
+    |-_header.jade
+  |-blog.jade
+  |-layout.jade
+  |-page.jade
+  |-post.jade
+</code></pre>
+
+					<p>I started with a master layout called <code>layout.jade</code>.</p>
+					<pre><code class="nohighlight">//- layout.jade
+doctype
+html
+  head
+    include partials/_head.jade
+  body
+    .container.row
+    include partials/_header.jade
+      .eight.columns.content
+          block content
+</code></pre>
+
+					<p><code>layout.jade</code> includes the partials: <code>_head.jade</code> and
+						<code>_header.jade</code>:</p>
+					<pre><code class="nohighlight">//- partials/_head.jade
+title= title ? title + ' - ' + 'Eric Jinks' : 'Eric Jinks'
+
+meta(charset="utf-8")
+
+link(href='/css/style.css' rel='stylesheet' type='text/css')
+
+script(src="/js/min/main-min.js")
+</code></pre>
+
+					<pre><code class="nohighlight">//- partials/_header.jade
+header
+  .taright.four.columns
+    h1.logo
+      a(href="/")Eric Jinks
+    nav.nav
+      ul
+        li
+          a(href="/blog") blog
+        li
+          a(href="/") about
+    ul.social
+      - var twitter = "twitter.com/jinksi"
+      - var github = "github.com/jinksi"
+      - var instagram = "instagram.com/jinksi"
+      - var email = "ericjinks@gmail.com"
+      li
+        a(href="http://#{twitter}" title="#{twitter}")
+          i(class="icon ion-social-twitter")
+        a(href="http://#{github}" title="#{github}")
+          i(class="icon ion-social-github")
+        a(href="http://#{instagram}" title="#{instagram}")
+          i(class="icon ion-social-instagram")
+        a(href="mailto#{email}" title="#{email}")
+          i(class="icon ion-email")
+</code></pre>
+
+					<p>Note the use of variables and logic in Jade === so much awesome.</p>
+					<p>Now I create a page template <code>page.jade</code>.</p>
+					<pre><code class="nohighlight">//- page.jade
+extends layout
+
+block content
+  div!= contents
+</code></pre>
+
+					<blockquote>
+						<p><code>!=</code> represents unescaped html.</p>
+					</blockquote>
+					<p>This is what a markdown page from the source directory looks like (<code>index.md</code>):</p>
+					<pre><code class="nohighlight">---
+title: About
+layout: page.jade
+---
+Hello. Text goes here......
+</code></pre>
+
+					<p>To add another page, I simply add another markdown file in the source directory:</p>
+					<pre><code class="nohighlight">---
+title: 404 - Page Not Found
+layout: page.jade
+---
+This page doesn't exist
+</code></pre>
+
+					<p>And the Blog page <code>blog.md</code>:</p>
+					<pre><code class="nohighlight">---
+title: Blog
+layout: blog.jade
+---
+</code></pre>
+
+					<p>Which uses the blog layout - <code>blog.jade</code>:</p>
+					<pre><code class="nohighlight">//- blog.jade
+extends layout
+block content
+  ul.post-list
+    each post in collections.posts
+      li.post-item
+        h5.title
+          a(href="/#{post.path}")
+           =post.title
+        div.details #{moment(post.publishDate).format("Do MMM YYYY")}
+        div !{post.excerpt}
+          a(href="/#{post.path}" class="readmore").u-pull-right read more
+          .clear
+      hr
+</code></pre>
+
+					<p>The blog layout works in combination with the <code>metalsmith-collections</code>						plugin to create the blog list.</p>
+					<p>Posts work in a similar way. Here is a basic <code>test-post.md</code>, inside
+						the <code>/src/posts</code> directory:</p>
+					<pre><code class="nohighlight">---
+title: Test Post
+publishDate: 2015-10-05
+author: Eric
+layout: post.jade
+---
+Post content goes here.
+</code></pre>
+
+					<p><code>post.jade</code>:</p>
+					<pre><code class="nohighlight">//- post.jade
+extends layout
+block content
+  .post-header
+    h4.post-title= title
+    div.details #{author}, #{publishDate}
+  .post-content      
+    div!= contents
+</code></pre>
+
+					<hr>
+					<h6 id="what-went-wrong-">What Went Wrong?</h6>
+					<p>I was getting errors with the <code>metalsmith-sass</code> plugin. This had
+						something to do with <code>Xcode Command Line Tools</code> being out of date
+						on my machine. I solved this using the instructions found <a href="http://railsapps.github.io/xcode-command-line-tools.html">here</a>.</p>
+					<hr>
+					<h6 id="the-result">The Result</h6>
+					<p>Finally, after adding a few more Metalsmith plugins, this is what my project
+						directory looks like:</p>
+					<pre><code class="nohighlight">/project_dir
+|-/node_modules
+|-/build
+|-/layouts
+  |-/partials
+    |-_head.jade
+    |-_header.jade
+  |-blog.jade
+  |-layout.jade
+  |-page.jade
+  |-post.jade
+|-/src
+  |-/fonts
+  |-/images
+  |-/js
+  |-/posts
+    |-creating-this-site.md
+  |-/scss
+    |-_normalize.scss
+    |-style.scss
+  |-404.md
+  |-blog.md
+  |-index.md
+|-build.js
+|-package.json
+</code></pre>
+
+					<p>And this is what my <code>build.js</code> contains:</p>
+					<pre><code>var Metalsmith = require(&#39;metalsmith&#39;),
+    branch = require(&#39;metalsmith-branch&#39;),
+    collections = require(&#39;metalsmith-collections&#39;),
+    excerpts = require(&#39;metalsmith-excerpts&#39;),
+    sass = require(&#39;metalsmith-sass&#39;),
+    markdown = require(&#39;metalsmith-markdown&#39;),
+    permalinks = require(&#39;metalsmith-permalinks&#39;),
+    serve = require(&#39;metalsmith-serve&#39;),
+    layouts = require(&#39;metalsmith-layouts&#39;),
+    watch = require(&#39;metalsmith-watch&#39;),
+    concat = require(&#39;metalsmith-concat&#39;),
+    moment = require(&#39;moment&#39;);
+
+Metalsmith(__dirname)
+  .metadata({
+    site: {
+      title: &#39;Eric Jinks&#39;,
+      url: &#39;http://ericjinks.com&#39;
+    }
+  })
+  .source(&#39;./src&#39;)
+  .destination(&#39;./build&#39;)
+  .use(collections({
+    posts: {
+      pattern: &#39;posts/*.md&#39;,
+      sortBy: &#39;date&#39;,
+      reverse: true
+    }
+  }))
+  .use(markdown())
+  .use(excerpts())
+  .use(branch(&#39;posts/**.html&#39;)
+    .use(permalinks({
+      pattern:&#39;:collection/:title&#39;
+    }))
+  )
+  .use(branch(&#39;**.html&#39;)
+    .use(branch(&#39;!index.html&#39;)
+      .use(branch(&#39;!404.html&#39;)
+        .use(permalinks({
+          pattern:&#39;:title&#39;
+        }))
+      )
+    )
+  )
+  .use(layouts({
+    engine: &quot;jade&quot;,
+    moment: moment
+  }))
+  .use(concat({
+    files: &#39;js/**/*.js&#39;,
+    output: &#39;js/min/main-min.js&#39;
+  }))
+  .use(sass({
+    outputDir: &#39;css/&#39;
+  }))
+  .use(serve({
+    port: 8080,
+    http_error_files: {
+      404: &quot;/404.html&quot;
+    }
+  }))
+  .use(watch({
+    paths: {
+        &quot;${source}/**/*&quot;: &quot;**/*&quot;,
+        &quot;layouts/**/*&quot;: &quot;**/*&quot;
+      },
+    livereload: true
+  }))
+  .build(function(err){
+    if (err){
+      console.log(err);
+    } else {
+      console.log(&#39;Site build complete!&#39;);
+    }
+  });
+</code></pre>
+					<hr>
+					<h6 id="what-next-">What Next?</h6>
+					<p>(Read Part 2 <a href="/blog/creating-this-site-part-2">here</a>)</p>
+					<p>This blog could use a tag or category system à la Wordpress, an RSS feed, pagination
+						and a draft post system. There are Metalsmith plugins for all of these and
+						more. If not, plugins can easily be crafted with a bit of basic JS (<a href="http://www.robinthrift.com/posts/metalsmith-part-3-refining-our-tools/">source</a>):</p>
+					<pre><code>var plugin = function(files, metalsmith, done) {
+  console.log(files);
+  done();
+};
+
+Metalsmith(__dirname)
+  //...
+  .use(plugin)
+  //...
+</code></pre>
+					<hr>
+					<h6 id="more-info">More info</h6>
+					<p><a href="http://nodejs.org">Node.js</a>
+						<br/>
+						<a href="http://npmjs.com">npm</a></br>
+						<a href="http://jade-lang.com/">Jade</a>
+						<br/>
+						<a href="http://metalsmith.io">Metalsmith.io</a>
+						<br/>
+						<a href="https://github.com/lambtron/awesome-metalsmith">Awesome Metalsmith</a></br>
+						<a href="http://www.robinthrift.com/posts/getting-to-know-metalsmith/">Getting to Know Metalsmith</a>
+						<br/>
+						<a href="https://azurelogic.com/posts/building-a-blog-with-metalsmith/">Building a blog with Metalsmith</a></p>
+				</div>
+			</div>
+			<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/monokai_sublime.min.css">
+			<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+			<script>
+				hljs.initHighlightingOnLoad();
+			</script>
+		</div>
+	</div>
+	<div class="overlay-texture">
+		<script>
+			(function(i, s, o, g, r, a, m) {
+				i['GoogleAnalyticsObject'] = r;
+				i[r] = i[r] || function() {
+					(i[r].q = i[r].q || []).push(arguments)
+				}, i[r].l = 1 * new Date();
+				a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+				a.async = 1;
+				a.src = g;
+				m.parentNode.insertBefore(a, m)
+			})(window, document, 'script', '//www.google-analytics.com/analytics.js',
+				'ga');
+			ga('create', 'UA-29201059-1', 'auto');
+			ga('send', 'pageview');
+		</script>
+	</div>
+</body>
+
+</html>
